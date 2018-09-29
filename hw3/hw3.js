@@ -69,12 +69,10 @@ function getCurrentPostComments ( postId ) {
         for (var ind2 in users){
             if(postId == comments[ind]['postId']) {
                 if (comments[ind]['author'] == ind2){
-
-                    // res.push(users[ind2]['name']);
-                    // res.push(comments[ind]['text']);
-
-                    res['author'].push(users[ind2]['name']);
-                    res['text'].push(comments[ind]['text']);
+					res.push({
+						author: users[ind2]['name'],
+						text: comments[ind]['text']			
+					});
 
                 }
             }
