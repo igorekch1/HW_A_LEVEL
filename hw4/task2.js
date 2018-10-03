@@ -5,16 +5,16 @@ var LibraryBook = function (_title,_year,_author) {
 	 	readerName =  null,
 	 	readerData = null;
 
-	giveTheBook = (function(client){
+	var giveTheBook = function(client){
 		readerName = client;
 		readerData = new Date().toLocaleString().split(', ')[0];
-	})
+	}
 
 	this.getBookInfo = function(){
 		if (readerName) {
-			console.info(`Current owner of the book: ${readerName} \nWas taken on: ${readerData}` )}
+			return `Current owner of the book: ${readerName} \nWas taken on: ${readerData}`}
 			 else {
-			 	console.info(`Title: "${_title}", Year: ${_year}, Author: ${_author} \nThe book is available!`);
+			 	return `Title: "${_title}", Year: ${_year}, Author: ${_author} \nThe book is available!`;
 		}
 	}
 
@@ -29,11 +29,11 @@ var LibraryBook = function (_title,_year,_author) {
 	}
 
 	this.returnBook = function(){
-		if (!readerName) console.info("This book has been already returned!") 
+		if (!readerName) return "This book has been already returned!"
 			else{
 				readerData = null;
 				readerName = null;
-				console.log("Book is returned!");	
+				return "Book is returned!";	
 			}
 	}
 }
