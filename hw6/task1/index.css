@@ -1,0 +1,19 @@
+body {
+    font-size: 16px;
+    font-family: monospace, Arial;
+}
+section {
+    color: blue;
+    margin: 20px;
+}
+section:before {
+    content:'массив: [ ';
+}
+section:after {
+    content:' ]';
+}
+
+button, input {
+    padding: 5px 10px;
+    font-size: 16px;
+}

@@ -25,19 +25,23 @@ elements.filter ( function ( element ) {
     return element.tagName === "BUTTON"
 })
 .forEach ( function ( element ) {
-    element.innerHTML = "remove DIVs"
+    element.innerHTML = "Remove everything"
     element.onclick = function ( event ) {
         recursRemove()
     }
 })
 
-var recursRemove = (function(tag){
+var recursRemove = (function(tag,but){
     var removeElem = document.body.querySelectorAll(tag);
+    var removeBut = document.body.querySelector(but);
     var ind = 0;
+
     return function removeDiv(){
         while (removeElem.length !== ind ){
             removeElem[ind].parentNode.removeChild(removeElem[ind++]);
             removeDiv(); 
+            removeBut.parentNode.removeChild(removeBut);
         }
     }
-})("DIV")
+    
+})("DIV", "BUTTON")
