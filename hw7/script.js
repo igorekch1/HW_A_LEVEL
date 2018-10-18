@@ -1,12 +1,11 @@
-var User = function (name="default_user", email="default_email", photoUrl = User.getAvatar()){
+var User = function (name="default_user", email="not_stated"){
 	this.name = name;
 	this.email = email;
-	this.photoUrl = photoUrl;
-
-	//this.displayInfo = 
+	this.photoUrl = User.getAvatar(); 
 }
 
 User.avatars = [
+	 "http://kemerovorea.ru/upload/medialibrary/19d/user.png",
      "https://pre00.deviantart.net/50f9/th/pre/i/2011/217/e/8/pikachu_2_by_nostalgiaattack-d45jd3i.png",
      "https://cdn.diversityavatars.com/wp-content/uploads/2018/01/Vector-Smart-Object-5.png",
      "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-31-512.png",
@@ -23,7 +22,7 @@ User.admin = {
 };
 
 User.getAvatar = function(){
-	this.avatars.shift();
+	return this.avatars.shift();
 };
 
 User.prototype.messageBox = (function(){
@@ -41,24 +40,24 @@ User.prototype.messageBox = (function(){
 	document.body.appendChild(message_box);
 	
 	// userInfo wrapper
-	var user_info = message_box.appendChild(document.createElement('div'))
-	user_info.style = `
+	message_box.user_info = message_box.appendChild(document.createElement('div'))
+	message_box.user_info.style = `
 		width: 100%;
 		height: 70px;
 		border-bottom: 2px solid #000;	
 	`;
 
 	// avatar
-	var image = user_info.appendChild(document.createElement('img'));
-	image.style = `
+	message_box.image = message_box.user_info.appendChild(document.createElement('img'));
+	message_box.image.style = `
 		width: 50px;
 		height: 50px;
 		margin: 10px;
 	`;
 
 	// userName
-	var user_name = user_info.appendChild(document.createElement('span'));
-	user_name.style = `
+	message_box.user_name = message_box.user_info.appendChild(document.createElement('span'));
+	message_box.user_name.style = `
 		font-size: 20px;
 		color: #fff;
 		letter-spacing: 2px;
@@ -66,41 +65,55 @@ User.prototype.messageBox = (function(){
 		top: 25px;
 		left: 80px;
 	`;
-	//user_name.innerHTML = "Privet";
 
 	// textArea
-	var textArea = message_box.appendChild(document.createElement('textarea'));
-	textArea.style = `
+	message_box.textArea = message_box.appendChild(document.createElement('textarea'));
+	message_box.textArea.style = `
 		width: 244px;
 		height: 122px;
 	`;
-	textArea.placeholder = "Chatting...";
+	message_box.textArea.placeholder = "Chatting...";
 
 	return message_box;
 })();
 
 User.prototype.write = function (message){
-	//this.messageBox.image.src = this.photoUrl;
+	console.log(this)
+	this.messageBox.image.src = this.photoUrl;
 	this.messageBox.user_name = this.name;
-	this.messageBox.textarea.value = message;
+	this.messageBox.textArea.value = message;
+}
+
+
+var readMessages = [];
+User.prototype.read = function(){
+	this.messageBox.user_name = this.name;
+	this.messageBox.image.src = this.photoUrl;
+	this.messageBox.textArea.value = userInfo;
 }
 
 var users = [];
+users.push ( new User() )
 users.push ( new User ( "Иван" ) )
 users.push ( new User ( 'Alex', "alex@gmail.com" ) )
 users.push ( new User ( 'Bob', "bob777@gmail.com" ) )
 users.push ( new User ( 'Dima', "dima888@gmail.com" ) )
 users.push ( new User ( 'Fima', "fima999@gmail.com" ) )
 
+var userInfo = [];
 var i =0;
-// setTimeot(function run(){
-// 	users[0].write (`Hello, I'm ${user.name}`);
-// 	if (i < users.length) setTimeout(run, 5000);
-// })
-
 (function run(){
+	
 	setTimeout(function(){
-		users[i].write (`Hello, I'm ${users.name}`);
-		if ( users.length > i++ ) run();
+		users[i].write (`Hello, I'm ${users[i].name}\nMy email: ${users[i].email}`);
+		userInfo.push({
+			name: users[i].name,
+			email: users[i].email
+		})
+		//admin.read();
+		console.log(users[i]);
+		if ( users.length > ++i ) run();
 	}, 3000)
-})()
+
+	//User.admin.read();
+})();
