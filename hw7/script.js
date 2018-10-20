@@ -110,7 +110,6 @@ var i =0;
 			name: users[i].name,
 			email: users[i].email
 		})
-		//admin.read();
 		console.log(users[i]);
 		if ( users.length > ++i ) run();
 	}, 3000)

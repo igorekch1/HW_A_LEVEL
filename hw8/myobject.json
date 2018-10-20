@@ -1,16 +1,16 @@
 [{
-	title: "Picture_1",
-	ref: "https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg"
+	"title": "Picture_1",
+	"ref": "https://resize.indiatvnews.com/en/centered/newbucket/715_431/2018/03/h6-1521531233.jpg"
 },{
-	title: "Picture_2",
-	ref: "https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
+	"title": "Picture_2",
+	"ref": "https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
 },{
-	title: "Picture_3",
-	ref: "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"
+	"title": "Picture_3",
+	"ref": "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"
 },{
-	title: "Picture_4",
-	ref: "http://www.qygjxz.com/data/out/62/5219127-dark-picture.jpg"
+	"title": "Picture_4",
+	"ref": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0_2nqm0H20gpO-Pf9BsBwuAYt3McWcb-6rFs37i244h71Lyrnkg"
 },{
-	title: "Picture_5",
-	ref: "https://vignette.wikia.nocookie.net/creepypastabrasil/images/b/bf/Sul.jpg/revision/latest?cb=20161014184718&path-prefix=pt-br"
+	"title": "Picture_5",
+	"ref": "https://vignette.wikia.nocookie.net/creepypastabrasil/images/b/bf/Sul.jpg/revision/latest?cb=20161014184718&path-prefix=pt-br"
 }]
