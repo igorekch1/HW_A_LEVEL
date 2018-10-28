@@ -17,7 +17,7 @@ var promise = function ( imageFile ) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(imageFile);
         fileReader.onload =function(event){
-            (imageFile.type.indexOf('image/') < 0) ? reject("Error") : resolve(event.target.result);
+            (imageFile.type.indexOf('image/') < 0) ? reject(alert("Выбранный файл не является изображением !!!")) : resolve(event.target.result);
         }
     });
 };
