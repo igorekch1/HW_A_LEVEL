@@ -11,9 +11,9 @@ var handbag = {
 	}
 }
 console.log(handbag.content);
-console.log("--------------");
+console.log("---------------");
 handbag.addItem("блокнот");
 console.log(handbag.content);
-console.log("--------------");
+console.log("---------------");
 handbag.delItem(5);
 console.log(handbag.content);
