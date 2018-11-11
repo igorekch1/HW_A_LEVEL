@@ -65,6 +65,7 @@ class Circle extends Shape{
 class Square extends Shape{
   constructor(x1,y1,x2,y2){
     super();
+
       this.x1 = x1;
       this.y1 = y1;
       this.x2 = x2;
@@ -82,7 +83,7 @@ class Square extends Shape{
 class Triangle extends Shape{
   constructor(x,y){
     super();
-
+    
     this.x=x;
     this.y=y;
     this.draw = function(){
@@ -98,26 +99,26 @@ class Triangle extends Shape{
 }
 
 
-// let new_shape;
-// sel.onchange = function(e){
+let new_shape;
+sel.onchange = function(e){
 
-//   var my_class = e.target.value;
-//   if (my_class == "Circle"){
-//     new_shape = new Circle(50,50,25);
-//   }
-//   if (my_class == "Square"){
-//     new_shape = new Square(20,20,60,60);
-//   }
-//   if (my_class == "Triange"){
-//     new_shape = new Triangle(20,60);
-//   }
-//   // ctx.fillStyle = 'rgba(255, 255, 255, 1)'
-//   // ctx.fillRect(0,0,canvas.width, canvas.width)
-//   new_shape.draw()
-//   console.log("----",new_shape)
-//   return new_shape;
-// }
-var new_shape = new Square(20,20,60,60);
+  var my_class = e.target.value;
+  if (my_class == "Circle"){
+    new_shape = new Circle(50,50,25);
+  }
+  if (my_class == "Square"){
+    new_shape = new Square(20,20,60,60);
+  }
+  if (my_class == "Triange"){
+    new_shape = new Triangle(20,60);
+  }
+  // ctx.fillStyle = 'rgba(255, 255, 255, 1)'
+  // ctx.fillRect(0,0,canvas.width, canvas.width)
+  new_shape.draw()
+  console.log("----",new_shape)
+  return new_shape;
+}
+// var new_shape = new Circle(30,30,20);
  
 
 function clear() {
@@ -128,10 +129,10 @@ function clear() {
 function draw() {
   clear()
   new_shape.draw();
-  new_shape.x1 += new_shape.vx;
-  new_shape.x2 += new_shape.vx;
-  new_shape.y1 += new_shape.vx;
-  new_shape.y2 += new_shape.vy;
+  new_shape.x += new_shape.vx;
+  // new_shape.x2 += new_shape.vx;
+  // new_shape.y1 += new_shape.vx;
+  new_shape.y += new_shape.vy;
   // ball.vy *= .99;
   // ball.vy += .25;
 
@@ -185,26 +186,26 @@ function control(){
 control();
 
 // Mouse control
-// canvas.addEventListener('mousemove', function(e) {
-//   if (!running) {
-//     clear();
-//     new_shape.x = e.clientX-300;
-//     new_shape.y = e.clientY-120;
-//     new_shape.draw();
-//     console.log("mousemove --- ",new_shape)
-//   }
-// });
+canvas.addEventListener('mousemove', function(e) {
+  if (!running) {
+    clear();
+    new_shape.x = e.clientX-300;
+    new_shape.y = e.clientY-120;
+    new_shape.draw();
+    console.log("mousemove --- ",new_shape)
+  }
+});
 
-// canvas.addEventListener('click', function(e) {
-//   if (!running) {
-//     raf = window.requestAnimationFrame(draw);
-//     running = true;
-//   }
-// });
+canvas.addEventListener('click', function(e) {
+  if (!running) {
+    raf = window.requestAnimationFrame(draw);
+    running = true;
+  }
+});
 
-// canvas.addEventListener('mouseout', function(e) {
-//   window.cancelAnimationFrame(raf);
-//   running = false;
-// });
+canvas.addEventListener('mouseout', function(e) {
+  window.cancelAnimationFrame(raf);
+  running = false;
+});
 
-// new_shape.draw();
+new_shape.draw();
