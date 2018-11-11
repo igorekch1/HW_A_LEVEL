@@ -40,6 +40,8 @@ class CanvasCustomElement extends HTMLElement{
 
     let wrapper_canvas = document.createElement('div')
     this.canvas = document.createElement('canvas')
+    this.canvas.width = `900`
+    this.canvas.height = `500`
     wrapper_canvas.appendChild(this.canvas)
     this.area = this.canvas.getContext("2d")
     this.shadow = this.attachShadow( {mode : 'open'} )
@@ -47,8 +49,6 @@ class CanvasCustomElement extends HTMLElement{
     let style = document.createElement ( 'style' )
     style.textContent = `
       canvas {
-        width: 900px;
-        height: 500px;
         border: 1px solid; 
         margin-top: 15px;
         background-color: #fff;
