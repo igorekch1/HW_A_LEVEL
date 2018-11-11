@@ -112,7 +112,7 @@ let regit
 
 //Making registration
 let buildCheckIn = function () {
-    // Making button to display inputs
+	// Making button to display inputs
     let but = appElem("button")
     but.innerHTML = `Check in`
     but.style= `
@@ -121,34 +121,37 @@ let buildCheckIn = function () {
         right: 20px;
         bottom: 80px;
     `
-    //Making container for input elements
-    regit = appElem("div")
-    regit.style = `
-        position: fixed;
-        top: 10px;
-        right : 150px;
-        width: 200px;
-        height: 150px;
-        display : none;
+	//Making container for input elements
+	regit = appElem("div")
+	regit.style = `
+		position: fixed;
+		top: 10px;
+		right : 150px;
+		width: 200px;
+		height: 150px;
+		display : none;
         background-color: #eee;
-        padding : 10px 10px 170px 10px;
+		padding : 10px 10px 170px 10px;
         border: 1px solid #000;
-        border-radius: 5%;
-    `
+		border-radius: 5%;
+	`
     //Making inputs
-    let p1 = appElem("p",regit)
+	let p1 = appElem("p",regit)
     user_name = appElem("input",p1)
-    let p2 = appElem("p",regit)
-    user_lastName = appElem("input",p2)
-    let p3 = appElem("p",regit)
-    user_photoURL = appElem("input",p3)
+    user_name.placeholder = `Enter your first name`
+	let p2 = appElem("p",regit)
+	user_lastName = appElem("input",p2)
+	user_lastName.placeholder = `Enter your second name`
+	let p3 = appElem("p",regit)
+	user_photoURL = appElem("input",p3)
+	user_photoURL.placeholder = `Enter photoURL`
 
-    let pCollection = document.body.querySelectorAll("p")
-    pCollection.forEach(x =>
-        x.style = `
-            margin-bottom: 0px;
-        `
-    )
+	let pCollection = document.body.querySelectorAll("p")
+	pCollection.forEach(x =>
+		x.style = `
+			margin-bottom: 0px;
+		`
+	)
 
     let inputCollection = regit.querySelectorAll("input")
     inputCollection.forEach(x =>
@@ -161,27 +164,27 @@ let buildCheckIn = function () {
     sendData = appElem("button", regit)
     sendData.innerHTML = `Submit`
     sendData.style = `
-            position: fixed;
-            top: 110px;
-            right : 105px;
-        `
+			position: fixed;
+			top: 130px;
+			right : 105px;
+		`
 
     // Display input on button-click
-    but.onclick = function(e){
-        e.preventDefault()
-        regit.style = `
-            position: fixed;
-            top: 0px;
-            right : 50px;
-            width: 200px;
-            height: 150px;
-            display : inline-block;
-        `
-    }
+	but.onclick = function(e){
+		e.preventDefault()
+		regit.style = `
+			position: fixed;
+			top: 0px;
+			right : 50px;
+			width: 200px;
+			height: 150px;
+			display : inline-block;
+		`
+	}
     
     // Sending data to make a new user
-    checkIn()
-        
+	checkIn()
+		
 }
 
 // Sending data to make a new user
