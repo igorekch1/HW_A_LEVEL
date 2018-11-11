@@ -1,0 +1,12 @@
+body {
+	background-image: url(../image/background.jpg);
+}
+
+label{
+	color: #fff;
+}
+
+canvas{
+	background-color: #fff;
+	margin: 0 0 0 300px;
+}
