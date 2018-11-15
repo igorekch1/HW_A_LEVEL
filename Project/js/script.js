@@ -185,25 +185,23 @@ start.addEventListener('click', function(e) {
 
 
 //------ OBTAINING IMAGES ------
+
+// ------ FOR TESTING ------
+// let canvas = document.body.appendChild(document.createElement("canvas"))
+// let ctx = canvas.getContext('2d');
+// ctx.width = window.innerWidth - 30  
+// ctx.height = window.innerHeight - 30
+// let sel_ava = document.body.appendChild(document.createElement("select"))
+//-----------------------------------
 // let sel_ava = document.querySelector ( '#select_ava' )
-// let image_arr = []
-// for (let i = 0; i<10; i++){
-//   fetch(`https://www.shareicon.net/data/2015/12/14/20781${i}_face_300x300.png`)
+// for (let i = 0; i<5; i++){
+//   fetch(`https://igorekch1.github.io/images.json`)
 //   .then(response => {
-//       response.blob().then(response => {
-//         urlObject = URL.createObjectURL( response)
-//         console.log(urlObject)
-// //         var image = document.createElement('img')
-// //         image.src = urlObject
-// //         image.width = 50
-// //         image.height = 50
-// //         document.body.appendChild(image)
-//       image_arr.push(urlObject)
-    
+//       response.json().then(response => {
+//         console.log(response[i].url)
 //        var option = document.createElement('option')
-//        option.value = i
+//        option.value = response[i].url
 //        option.innerHTML = ++i
-// //        option.appendChild(image)
 //        sel_ava.appendChild(option)
 //       })
 //   })
@@ -216,8 +214,8 @@ start.addEventListener('click', function(e) {
 //   ctx.fillRect(0,0,canvas.width,canvas.height);
 //   pict = null;
 //   pict = new Image()
-//   pict.src = image_arr[sel_ava.value]
-//   console.log("---",sel_ava.value,"--",image_arr[sel_ava.value],"  ",pict.src)
+//   pict.src = sel_ava.value
+//   console.log("---",sel_ava.value,"--",pict.src)
 //   pict.onload = function(e){
 //     ctx.drawImage(pict, 10,10,50,50)
 //   }  
@@ -225,7 +223,7 @@ start.addEventListener('click', function(e) {
 
 
 //----- ANIMATION FOR IMAGE-----
-// var x=30, y=30, vx=10, vy=1
+// var x=10, y=10, vx=10, vy=1, raf
 // function move(){
 //   ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
 //   ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -243,6 +241,8 @@ start.addEventListener('click', function(e) {
 
 //   raf = window.requestAnimationFrame(move);
 // }
+
+// move()
 
 //----- MOUSE CONTROL FOR IMAGE -----
 // canvas.addEventListener('mousemove', function(e) {
