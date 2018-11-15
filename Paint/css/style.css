@@ -2,13 +2,25 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #000;
+	border: 3px solid #037900;
 }
 
 .clear{
 	clear: both;
 }
 
+.canvas{
+	position: absolute;
+	top: 0;
+	right: : 500px;
+}
+
 /*-------------controls-------------*/
+#properties{
+	position: absolute;
+	top: 105px;
+	right: 300px;
+}
 
 #controls, #properties{
 	color: #fff;
@@ -44,12 +56,13 @@ input[ type="color" ]{
 
 #tool-images{
 	width: 50px;
-	margin: 25px 0 10px 17px;
+	margin: 20px 0 10px 34px;
 }
 
 #tool-images:hover, .tool-active{
 	cursor: pointer;
-	border: 1px solid #037900;
+	border: 2px solid #037900;
+	padding: 10px 0 5px 10px;
 }
 
 #tool-size ul{
