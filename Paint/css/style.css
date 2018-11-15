@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #d2dbe9;
+	background-color: #000;
 }
 
 .clear{
@@ -13,8 +13,8 @@ body {
 #controls, #properties{
 	color: #663977;
 	height: 100px;
-	background-color: #dce6f4;
-	border-bottom: 2px solid #c5cfdf;
+	background-color: #fff;
+	border-bottom: 4px solid #037900;
 }
 
 .container{
@@ -23,7 +23,7 @@ body {
 	margin: 10px 0 0 20px;
 	height: 80px;
 	width: 130px;
-	border-right: 1px solid #a5b8d9;
+	border-right: 1px solid #037900;
 }
 
 input[type="button"], input[type="file"]{
