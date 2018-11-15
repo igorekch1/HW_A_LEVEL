@@ -11,10 +11,10 @@ body {
 /*-------------controls-------------*/
 
 #controls, #properties{
-	color: #663977;
+	color: #fff;
 	height: 100px;
-	background-color: #fff;
-	border-bottom: 4px solid #037900;
+	background-color: #000;
+	border-bottom: 3px solid #037900;
 }
 
 .container{
@@ -49,7 +49,7 @@ input[ type="color" ]{
 
 #tool-images:hover, .tool-active{
 	cursor: pointer;
-	border: 1px solid blue;
+	border: 1px solid #037900;
 }
 
 #tool-size ul{
@@ -62,7 +62,7 @@ input[ type="color" ]{
 	cursor: pointer;
 	border: 1px solid;
 	border-radius: 2px;
-	background-color: #ffdc88;
+	background-color: #037900;
 }
 
 /*--------canvases-------*/

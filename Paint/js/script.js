@@ -15,14 +15,13 @@ var mouseX, mouseY,
 var tools = [], sizes = [];
 
 tools.pencil = document.getElementById("pencil");
-tools.eraser = document.getElementById("eraser");
 
 sizes.small = document.getElementById("small");
 sizes.middle = document.getElementById("middle");
 sizes.big = document.getElementById("big")
 
-var eraserSize = 8, 
-    eraseCursor = "url(image/eraser.png), auto";
+// var eraserSize = 8, 
+//     eraseCursor = "url(image/eraser.png), auto";
 
 var canvasClear = document.getElementById("clear-canvas"),
     fileImg = document.getElementById("img-file"),
@@ -35,7 +34,6 @@ var startX = 100, startY = 100;
 
 window.onload = function(e){
   canvasPosition = canvasBack.getBoundingClientRect();
-  console.log(canvasPosition)
 }
 
 canvasWidth.onchange = function(e){
@@ -84,60 +82,62 @@ function removeAllClasses(arr){
 
 sizes.small.onclick = function(e){
   ctxb.lineWidth = 1;
-  eraserSize = 8;
-  eraseCursor = "url(image/cursor.png), auto"
+  // eraserSize = 8;
+  // eraseCursor = "url(image/cursor.png), auto"
 
 }
 
 sizes.middle.onclick = function(e){
   ctxb.lineWidth = 5;
-  eraserSize = 16;
-  eraseCursor = "url(image/cursor.png), auto"
+  // eraserSize = 16;
+  // eraseCursor = "url(image/cursor.png), auto"
 
 }
 
 sizes.big.onclick = function(e){
   ctxb.lineWidth = 15;
-  eraserSize = 32;
-  eraseCursor = "url(image/cursor.png), auto"
+  // eraserSize = 32;
+  // eraseCursor = "url(image/cursor.png), auto"
 }
 
 var processing = false;
 var operations = [];
 
-operations['mousedown'] = function(){
+operations['mousedown'] = function(e){
   processing = true;
   ctxb.beginPath();
-}
-operations['mouseup'] = function(){
+};
+operations['mouseup'] = function(e){
   processing = false;
-}
+};
+
+
 
 canvasFront.addEventListener("mousedown", operations["mousedown"]);
 canvasFront.addEventListener("mouseup", operations["mouseup"]);
-canvasFront.addEventListener("mousemove", operations["mousemove"]);
+//canvasFront.addEventListener("mousemove", operations["mousemove"]);
 
 tools.pencil.onclick = function(e){
   canvasFront.style.cursor = "pointer";
-  console.log(tools.pencil)
-  operations["mousemove"] = function(){
+  operations['mousemove'] = function(){
     if (processing){
-      console.log("painting....")
       ctxb.lineTo(mouseX, mouseY);
       ctxb.stroke();
     }
   }
+  canvasFront.addEventListener("mousemove", operations["mousemove"]);
 }
 
-tools.eraser.onclick = function(e){
-  canvasFront.style.cursor = "pointer";
-  console.log(tools.pencil)
-  operations["mousemove"] = function(){
-    if (processing){
-      ctxb.clearRect(mouseX,mouseY, eraserSize, eraserSize);
-    }
-  }
-}
+// tools.eraser.onclick = function(e){
+//   canvasFront.style.cursor = "pointer";
+//   console.log(tools.pencil)
+//   operations["mousemove"] = function(){
+//     if (processing){
+//       ctxb.clearRect(mouseX,mouseY, eraserSize, eraserSize);
+//     }
+//   }
+//   canvasFront.addEventListener("mousemove", operations["mousemove"]);
+// }
 
 color.onchange = function(e){
   ctxb.strokeStyle = e.srcElement.value
