@@ -83,31 +83,26 @@ function removeAllClasses(arr){
 sizes.small.onclick = function(e){
   ctxb.lineWidth = 1;
   // eraserSize = 8;
-  // eraseCursor = "url(image/cursor.png), auto"
-
 }
 
 sizes.middle.onclick = function(e){
   ctxb.lineWidth = 5;
   // eraserSize = 16;
-  // eraseCursor = "url(image/cursor.png), auto"
-
 }
 
 sizes.big.onclick = function(e){
   ctxb.lineWidth = 15;
   // eraserSize = 32;
-  // eraseCursor = "url(image/cursor.png), auto"
 }
 
 var processing = false;
 var operations = [];
 
-operations['mousedown'] = function(e){
+operations['mousedown'] = function(){
   processing = true;
   ctxb.beginPath();
 };
-operations['mouseup'] = function(e){
+operations['mouseup'] = function(){
   processing = false;
 };
 
@@ -141,6 +136,27 @@ tools.pencil.onclick = function(e){
 
 color.onchange = function(e){
   ctxb.strokeStyle = e.srcElement.value
+}
+
+var generateImg = document.querySelector('#generate'), i = 0;
+
+generateImg.onclick = function(e){
+  e.preventDefault();
+  if (i < 5) {
+  fetch("https://igorekch1.github.io/images.json")
+    .then(response => response.json()
+        .then(response => {
+          url = response[i++].url;
+          console.log(url)
+          img = new Image();
+          img.src = url;
+          img.onload = function(){
+            ctxf.strokeRect(startX, startY, img.width, img.height);
+            ctxf.drawImage(img, startX, startY); 
+          }
+        })
+    )
+  } else i = 0;
 }
 
 fileImg.onchange = function(e){
@@ -202,4 +218,6 @@ function invertImage(){
   }
   ctxf.putImageData(imageData, startX, startY);
 }
+
+
 
