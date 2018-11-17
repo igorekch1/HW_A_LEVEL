@@ -143,7 +143,7 @@ var generateImg = document.querySelector('#generate'), i = 0;
 generateImg.onclick = function(e){
   e.preventDefault();
   if (i < 5) {
-  fetch("https://igorekch1.github.io/images.json")
+  fetch("https://igorekch1.github.io/db.json")
     .then(response => response.json()
         .then(response => {
           url = response[i++].url;
@@ -153,7 +153,31 @@ generateImg.onclick = function(e){
           img.onload = function(){
             ctxf.strokeRect(startX, startY, img.width, img.height);
             ctxf.drawImage(img, startX, startY); 
+
+            operations['mousemove'] = function(e){
+              if (processing){
+                canvasFront.width = canvasFront.width;
+                ctxf.strokeRect(mouseX, mouseY, imgWidth.value, imgHeight.value);
+                ctxf.drawImage(img, mouseX, mouseY, imgWidth.value, imgHeight.value);
+              }
+            }
+
+            operations['mouseup'] = function(e){
+              properties.style.display = `none`;
+              canvasFront.width = canvasFront.width;
+              processing = false;
+              ctxb.drawImage(img, mouseX, mouseY, imgWidth.value, imgHeight.value);
+              operations['mousemove'] = undefined;
+              operations['mouseup'] = function(e){
+                processing = false;
+              }
+            }
           }
+
+          img.src = url;
+          properties.style.display = `block`;
+          imgWidth.value = img.width;
+          imgHeight.value = img.height;
         })
     )
   } else i = 0;
@@ -219,5 +243,19 @@ function invertImage(){
   ctxf.putImageData(imageData, startX, startY);
 }
 
+function sendImage() {
+  var canvasData = ctxf.toDataURL("image/png");
+  var ajax = new XMLHttpRequest();
 
+  ajax.open("POST", "https://igorekch1.github.io/db.json");
+  ajax.onreadystatechange = function() {
+    console.log(ajax.responseText);
+  }
+  ajax.setRequestHeader("Content-Type", "application/upload");
+  ajax.send("imgData=" + canvasData);
+  alert("Was sent");
+}
+
+var sendData = document.querySelector('#send');
+sendData.addEventListener("click",sendImage)
 
